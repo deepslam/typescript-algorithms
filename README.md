@@ -1,6 +1,6 @@
 # Collection of typescript algorithms
 
-1. Count bit in a number
+1. Count bits in a number
 
 ```javascript
 export function countBits(n: number): number {
