@@ -11,15 +11,16 @@ export function countBits(n: number): number {
 * Anagram finder
 
 ```javascript
-function anagram(string1, string2) {
+function anagram(string1: string, string2: string): boolean {
     if (string1.toLowerCase() === string2.toLowerCase()) {
-       return 'anagram'
+       return true
     } else if (string1.length === string2.length) {
 
     if (string1.toLowerCase().split("").sort().join() === string2.toLowerCase().split("").sort().join()) {
-      return 'anagram'
+      return true
     }
-  } else { return 'not a anagram' }
+  }
+  return false;
 }
 
 console.log(anagram('abc','bca'))
