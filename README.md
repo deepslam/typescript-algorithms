@@ -25,3 +25,19 @@ function anagram(string1: string, string2: string): boolean {
 
 console.log(anagram('abc','bca'))
 ```
+# Debounce
+
+```javascript
+/**
+ * @param {Function} fn
+ * @param {number} t milliseconds
+ * @return {Function}
+ */
+var debounce = function(fn, t) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), t);
+    }
+};
+```
