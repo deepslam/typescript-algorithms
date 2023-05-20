@@ -41,3 +41,10 @@ var debounce = function(fn, t) {
     }
 };
 ```
+
+# Object / Array deep clone
+
+```javascript
+function (obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
