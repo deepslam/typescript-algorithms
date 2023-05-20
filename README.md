@@ -48,6 +48,7 @@ var debounce = function(fn, t) {
 function (obj) {
   return JSON.parse(JSON.stringify(obj));
 }
+```
 
 # Time limited function
 
