@@ -1,4 +1,4 @@
-# Collection of typescript algorithms
+# Collection of JavaScript algorithms and techniques
 
 * Count bits in a number
 
@@ -69,5 +69,23 @@ var timeLimit = function(fn, t) {
       setTimeout(() => reject('Time Limit Exceeded'), t)
     })      
   }
+};
+```
+
+# Currying a function
+
+```javascript
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+var curry = function(fn) {
+    return function curried(...args) {
+        if (args.length === fn.length) {
+            return fn(...args);
+        }
+
+        return (...nextArgs) => curried(...args,...nextArgs);
+    };
 };
 ```
