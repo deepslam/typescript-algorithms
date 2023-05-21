@@ -125,3 +125,28 @@ var promisePool = async function(functions, n) {
     })
 };
 ```
+
+# Check instance of object (including primitive types)
+
+```javascript
+/**
+ * @param {any} obj
+ * @param {any} classFunction
+ * @return {boolean}
+ */
+var checkIfInstanceOf = function(obj, classFunction) {
+    if (obj === null || obj === undefined || typeof classFunction !== "function") {
+        return false;
+    }
+
+    let potentialPrototype = Object.getPrototypeOf(obj);
+    while (potentialPrototype !== null) {
+        if (potentialPrototype === classFunction.prototype) {
+            return true;
+        }
+        potentialPrototype = Object.getPrototypeOf(potentialPrototype);
+    }
+
+    return false;
+};
+```
