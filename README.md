@@ -150,3 +150,23 @@ var checkIfInstanceOf = function(obj, classFunction) {
     return false;
 };
 ```
+
+# Functions composition
+
+```javascript
+/**
+ * @param {Function[]} functions
+ * @return {Function}
+ */
+var compose = function(functions) {
+	return function(x) {
+        if (functions.length === 0) return x;
+        let result = x;
+        functions.reverse().forEach(func => {
+            result = func(result);
+        })
+
+        return result;
+    }
+};
+```
