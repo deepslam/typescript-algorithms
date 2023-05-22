@@ -208,3 +208,33 @@ function memoize(fn) {
     }
 }
 ```
+
+# Throttle a function
+
+```typescript
+type F = (...args: any[]) => void
+
+function throttle(fn: F, t: number): F {
+    let timeoutInProgress = null;
+    let argsToProcess = null;
+
+    const timeoutFunction = () => {
+        if (argsToProcess === null) {
+            timeoutInProgress = null;
+        } else {
+            fn(...argsToProcess);
+            argsToProcess = null;
+            timeoutInProgress = setTimeout(timeoutFunction, t);
+        }
+    }
+
+    return function throttled(...args) {
+        if (timeoutInProgress) {
+            argsToProcess = args;
+        } else {
+            fn(...args);
+            timeoutInProgress = setTimeout(timeoutFunction, t);
+        }
+    }
+};
+```
