@@ -188,3 +188,23 @@ var once = function(fn) {
     }
 };
 ```
+
+# Function memoization
+
+```javascript
+/**
+ * @param {Function} fn
+ */
+function memoize(fn) {
+    let memoizedValues = {};
+    return function(...args) {
+        const memoKey = JSON.stringify(args);
+        if (memoKey in memoizedValues) {
+            return memoizedValues[memoKey];
+            
+        }
+        memoizedValues[memoKey] = fn(...args);
+        return memoizedValues[memoKey];
+    }
+}
+```
