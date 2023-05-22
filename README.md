@@ -63,12 +63,12 @@ A time limited function is a function that is identical to the original unless i
  * @return {Function}
  */
 var timeLimit = function(fn, t) {
-	return async function(...args) {
-    return new Promise((resolve, reject) => {
-      fn(...args).then(resolve).catch((e) => {reject(e.toString())});
-      setTimeout(() => reject('Time Limit Exceeded'), t)
-    })      
-  }
+    return async function(...args) {
+	    return new Promise((resolve, reject) => {
+	      setTimeout((e) => reject("Time Limit Exceeded"), t);
+	      fn(...args).then(resolve).catch(reject);      
+	    });   
+    }
 };
 ```
 
