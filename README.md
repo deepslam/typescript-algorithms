@@ -28,15 +28,14 @@ console.log(anagram('abc','bca'))
 # Debounce
 
 ```javascript
-/**
- * @param {Function} fn
- * @param {number} t milliseconds
- * @return {Function}
- */
-var debounce = function(fn, t) {
+type F = (...p: any[]) => any
+
+function debounce(fn: F, t: number): F {
     let timeout;
     return function(...args) {
-        clearTimeout(timeout);
+        if (timeout) {
+            clearTimeout(timeout);
+        }
         timeout = setTimeout(() => fn(...args), t);
     }
 };
