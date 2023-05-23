@@ -237,3 +237,26 @@ function throttle(fn: F, t: number): F {
     }
 };
 ```
+
+# Deep equal
+
+```javascript
+/**
+ * @param {any} o1
+ * @param {any} o2
+ * @return {boolean}
+ */
+function helper(_, value) {
+    if (value && typeof value === "object" && !Array.isArray(value))
+        return Object.fromEntries(Object.entries(value).sort());
+    else
+        return value;
+}
+
+function areDeeplyEqual(o1: any, o2: any): boolean {
+    const stringified1 = JSON.stringify(o1, helper);
+    const stringified2 = JSON.stringify(o2, helper);
+
+    return stringified1 === stringified2;
+};
+```
