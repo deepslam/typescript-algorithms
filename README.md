@@ -260,3 +260,35 @@ function areDeeplyEqual(o1: any, o2: any): boolean {
     return stringified1 === stringified2;
 };
 ```
+
+# JSON stringify without using JSON stringify
+
+```typescript
+function jsonStringify(object: any): string {
+    if (object === null) {
+        return "null";
+    }
+    if (typeof object === 'object') {
+        if (Array.isArray(object)) {
+            return "[" + object.map(item => jsonStringify(item)).join(",") + "]"
+        } else {
+            if (Object.keys(object).length) {
+                return "{" + Object.keys(object).map(key => `"${key}":${jsonStringify(object[key])}`).join(",") + "}";
+            } 
+            
+            return "{}";
+        }
+    }
+    if (typeof object === "boolean") {
+        return Boolean(object).toString();
+    }
+    if (typeof object === "number") {
+        return object.toString();
+    }
+    if (typeof object === "string") {
+        return `"${object}"`;
+    }    
+
+    return object.toString();
+};
+```
