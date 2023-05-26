@@ -292,3 +292,20 @@ function jsonStringify(object: any): string {
     return object.toString();
 };
 ```
+
+# Chunk array
+
+```javascript
+function chunk(arr: any[], size: number): any[][] {
+    const chunksCount = Math.ceil(arr.length / size);
+    let currentChunk = 0;
+    const result: any[][] = [];
+
+    while (currentChunk < chunksCount) {
+        result.push(arr.slice(currentChunk*size, (currentChunk+1)*size));
+        currentChunk++;
+    }
+
+    return result;
+};
+```
