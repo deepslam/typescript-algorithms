@@ -323,3 +323,27 @@ Array.prototype.last = function() {
     return this[this.length - 1] ?? -1;
 };
 ```
+
+# Flattening an array with optional depth limit
+
+```javascript
+type MultiDimensionalArray = (number | MultiDimensionalArray)[];
+
+var flat = function (arr:  MultiDimensionalArray, n: number):  MultiDimensionalArray {
+    let result: MultiDimensionalArray = [];
+    const getElementsFromArray = (subarr: MultiDimensionalArray, l = 0) => {
+        subarr.forEach(item => {
+            if (Array.isArray(item) && l > 0) {
+                getElementsFromArray(item, l - 1)
+            } else {
+                result.push(item);
+            }
+        })
+    }
+    if (n === 0) return arr;
+
+    getElementsFromArray(arr, n);
+
+    return result;
+};
+```
