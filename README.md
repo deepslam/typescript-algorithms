@@ -347,3 +347,26 @@ var flat = function (arr:  MultiDimensionalArray, n: number):  MultiDimensionalA
     return result;
 };
 ```
+
+# Group By in an array
+
+```javascript
+declare global {
+    interface Array<T> {
+        groupBy(fn: (item: T) => string): Record<string, T[]>
+    }
+}
+
+Array.prototype.groupBy = function(fn) {
+    const result:Record<string, unknown[]> = {};
+    this.forEach(item => {
+        const index = fn(item);
+        if (!result[index]) {
+            result[index] = [];
+        }
+        result[index].push(item);
+    });
+
+    return result;
+}
+```
