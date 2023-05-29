@@ -41,7 +41,7 @@ function debounce(fn: F, t: number): F {
 };
 ```
 
-# Object / Array deep clone
+* Object / Array deep clone
 
 ```javascript
 function (obj) {
@@ -49,7 +49,7 @@ function (obj) {
 }
 ```
 
-# Time limited function
+* Time limited function
 
 Given an asyncronous function fn and a time t in milliseconds, return a new time limited version of the input function.
 
@@ -71,7 +71,7 @@ var timeLimit = function(fn, t) {
 };
 ```
 
-# Currying a function
+* Currying a function
 
 ```javascript
 /**
@@ -89,7 +89,7 @@ var curry = function(fn) {
 };
 ```
 
-# Promise pool (with a treshold)
+* Promise pool (with a treshold)
 
 ```javascript
 /**
@@ -125,7 +125,7 @@ var promisePool = async function(functions, n) {
 };
 ```
 
-# Check instance of object (including primitive types)
+* Check instance of object (including primitive types)
 
 ```javascript
 /**
@@ -150,7 +150,7 @@ var checkIfInstanceOf = function(obj, classFunction) {
 };
 ```
 
-# Functions composition
+* Functions composition
 
 ```javascript
 /**
@@ -170,7 +170,7 @@ var compose = function(functions) {
 };
 ```
 
-# Call function just once
+* Call function just once
 
 ```javascript
 /**
@@ -188,7 +188,7 @@ var once = function(fn) {
 };
 ```
 
-# Function memoization
+* Function memoization
 
 ```javascript
 /**
@@ -208,7 +208,7 @@ function memoize(fn) {
 }
 ```
 
-# Throttle a function
+* Throttle a function
 
 ```typescript
 type F = (...args: any[]) => void
@@ -238,7 +238,7 @@ function throttle(fn: F, t: number): F {
 };
 ```
 
-# Deep equal
+* Deep equal
 
 ```javascript
 /**
@@ -261,7 +261,7 @@ function areDeeplyEqual(o1: any, o2: any): boolean {
 };
 ```
 
-# JSON stringify without using JSON stringify
+* JSON stringify without using JSON stringify
 
 ```typescript
 function jsonStringify(object: any): string {
@@ -293,7 +293,7 @@ function jsonStringify(object: any): string {
 };
 ```
 
-# Chunk array
+* Chunk array
 
 ```javascript
 function chunk(arr: any[], size: number): any[][] {
@@ -310,7 +310,7 @@ function chunk(arr: any[], size: number): any[][] {
 };
 ```
 
-# Array prototype last
+* Array prototype last
 
 ```javascript
 declare global {
@@ -324,7 +324,7 @@ Array.prototype.last = function() {
 };
 ```
 
-# Flattening an array with optional depth limit
+* Flattening an array with optional depth limit
 
 ```javascript
 type MultiDimensionalArray = (number | MultiDimensionalArray)[];
@@ -348,7 +348,7 @@ var flat = function (arr:  MultiDimensionalArray, n: number):  MultiDimensionalA
 };
 ```
 
-# Group By in an array
+* Group By in an array
 
 ```javascript
 declare global {
@@ -371,7 +371,7 @@ Array.prototype.groupBy = function(fn) {
 }
 ```
 
-# Check instanceof object (with checking all prototypes)
+* Check instanceof object (with checking all prototypes)
 
 ```javascript
 function checkIfInstanceOf(obj: any, classFunction: any): boolean {
