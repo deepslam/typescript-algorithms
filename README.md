@@ -420,3 +420,38 @@ function checkIfInstanceOf(obj: any, classFunction: any): boolean {
   return false;
 };
 ```
+
+* Print ranges from the given array
+
+```javascript
+function summaryRanges(nums: number[]): string[] {
+    const result: string[] = [];
+    const addToResult = (range:number[]) => {
+        if (typeof range[0] === 'undefined' || typeof range[1] === 'undefined') {
+            return;
+        }
+        const currentRange = range[0] === range[1] ? 
+                                range[0].toString() :
+                                range.map(item => item.toString()).join('->');
+
+        if (!result.includes(currentRange)) {
+            result.push(currentRange);
+        }
+    }
+    let currentRange = [];
+    for (let i=0;i<nums.length;i++) {    
+        if (typeof currentRange[0] === 'undefined') {
+            currentRange[0] = nums[i];
+            currentRange[1] = nums[i];
+        } else if (nums[i] - currentRange[1] <= 1) {
+            currentRange[1] = nums[i];
+        } else {
+            addToResult(currentRange);
+            currentRange = [nums[i], nums[i]];
+        }
+    }
+
+    addToResult(currentRange);
+    return result;
+};
+```
