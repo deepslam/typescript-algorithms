@@ -455,3 +455,20 @@ function summaryRanges(nums: number[]): string[] {
     return result;
 };
 ```
+
+* Remove duplicates from array
+
+```javascript
+function removeDuplicates(nums: number[]): number {
+    let prevElement = undefined;
+    for (let i=0;i<=nums.length;i++) {
+        if (prevElement === nums[i]) {
+            nums.splice(i, 1);
+            i--;
+        }
+        prevElement = nums[i];
+    }
+
+    return nums.length;
+};
+```
