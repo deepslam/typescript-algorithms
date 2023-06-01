@@ -517,3 +517,22 @@ class EventEmitter {
  * emitter.emit('onClick'); // []
  */
 ```
+
+* Array wrapper (usage of valueOf and toString)
+
+```typescript
+class ArrayWrapper {
+    #nums;
+	constructor(nums: number[]) {
+        this.#nums = nums;
+    }
+
+	valueOf() {
+        return this.#nums.reduce((acc, current) => acc + current, 0);
+    }
+
+	toString() {
+        return `[${this.#nums.join(',')}]`;
+    }
+};
+```
