@@ -536,3 +536,41 @@ class ArrayWrapper {
     }
 };
 ```
+
+* Traverse a tree with JavaScript generator
+
+```javascript
+function* traverseTree(node) {
+  if (!node) {
+    return;
+  }
+
+  yield node.value;
+
+  if (node.left) {
+    yield* traverseTree(node.left);
+  }
+
+  if (node.right) {
+    yield* traverseTree(node.right);
+  }
+}
+
+const tree = {
+  value: 1,
+  left: {
+    value: 2,
+    left: { value: 4 },
+    right: { value: 5 },
+  },
+  right: {
+    value: 3,
+    left: { value: 6 },
+    right: { value: 7 },
+  },
+};
+
+for (const value of traverseTree(tree)) {
+  console.log(value); // logs: 1, 2, 4, 5, 3, 6, 7
+}
+```
