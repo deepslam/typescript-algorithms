@@ -574,3 +574,18 @@ for (const value of traverseTree(tree)) {
   console.log(value); // logs: 1, 2, 4, 5, 3, 6, 7
 }
 ```
+
+* Fibonnacci series generator
+
+```javascript
+function* fibGenerator(): Generator<number, any, number> {
+    let prevA = 0;
+    let prevB = 1;
+    while (true) {
+        yield prevA;
+        const temp = prevA;
+        prevA = prevB;
+        prevB += temp;
+    }
+};
+```
