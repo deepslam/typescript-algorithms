@@ -621,3 +621,31 @@ function* inorderTraversal(arr: MultidimensionalArray): Generator<number, void, 
     }
 };
 ```
+
+* Valid parentheses check
+
+```typescript
+const isValid = (s: string) => {
+  if (s.length === 0 || s.length === null) {
+    return false;
+  }
+  
+  const pairsObject: Record<string, string> = {
+  ')': '(',
+  '}': '{',
+  ']': '['
+  }
+  let stack: Array<string> = [];
+
+  for (let i = 0; i < s.length; i++) {
+    if (Object.keys(pairsObject).includes(s[i])) {
+      if (stack.pop() != pairsObject[s[i]]) {
+        return false
+      }
+    } else {
+      stack.push(s[i])
+    }
+  }
+  return stack.length === 0
+}
+```
