@@ -601,3 +601,23 @@ function* fibGenerator(): Generator<number> {
     }
 };
 ```
+
+* Traverse array iterator with generator
+
+```javascript
+type MultidimensionalArray = (MultidimensionalArray | number)[]
+
+function* inorderTraversal(arr: MultidimensionalArray): Generator<number, void, unknown> {
+    if (Array.isArray(arr)) {
+        for (let item of arr) {
+            if (Array.isArray(item)) {
+                yield *inorderTraversal(item);
+            } else {
+                yield item;
+            }
+        }
+    } else {
+        yield arr;
+    }
+};
+```
