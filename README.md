@@ -682,3 +682,19 @@ function promiseAllStepN(n, list) {
 }
 Promise.allConcurrent = n => list =>  promiseAllStepN(n, list)
 ```
+
+* Find a maximum profit from selling stock
+
+```typescript
+function maxProfit(prices: number[]): number {
+    let min = prices[0]
+    let max = 0
+     
+     for(let i = 0; i < prices.length; i++){
+         min = Math.min(min, prices[i])
+         max = Math.max(max, prices[i] - min)
+     }
+
+    return max
+};
+```
