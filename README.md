@@ -698,3 +698,21 @@ function maxProfit(prices: number[]): number {
     return max
 };
 ```
+
+# Can we jump in an array
+
+You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+
+Return true if you can reach the last index, or false otherwise.
+
+```typescript
+function canJump(nums: number[]): boolean {
+  let target = nums.length-1
+  for (let j = nums.length-2; j >= 0; j--) {
+    if (j + nums[j] >= target) {
+      target = j
+    }
+  }
+  return target === 0
+};
+```
