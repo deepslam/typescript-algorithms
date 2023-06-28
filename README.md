@@ -752,3 +752,34 @@ function hIndex(citations: number[]): number {
     return citations.sort((a,b) => b-a).filter((x,i) => x > i).length;
 };
 ```
+
+#  Insert Delete GetRandom O(1)
+
+```typescript
+class RandomizedSet {
+    data = new Set();
+    constructor() {
+        
+    }
+
+    insert(val: number): boolean {
+        if (!this.data.has(val)) {
+            this.data.add(val);
+            return true;
+        }
+        return false;
+    }
+
+    remove(val: number): boolean {
+        if (this.data.has(val)) {
+            this.data.delete(val);
+            return true;
+        }
+        return false;
+    }
+
+    getRandom(): number {
+        return Number([...this.data][Math.floor(Math.random()*this.data.size)]);
+    }
+}
+```
